@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+
+# Prisma generated files (only if you generate custom clients later)
+/src/generated/
+
+# AI assistant folders
+.agents/
+.claude/
+.windsurf/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
