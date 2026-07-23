@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Order Management Dashboard</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <script src="/socket.io/socket.io.js"></script>
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            📦 <span>OrderMS</span>
+        </div>
+
+        <nav>
+
+            <a href="#" class="active">Dashboard</a>
+
+            <a href="#">Orders</a>
+
+            <a href="#">Analytics</a>
+
+            <a href="#">Settings</a>
+
+        </nav>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main class="main-content">
+
+        <!-- Top Bar -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>Order Management Dashboard</h1>
+
+                <p>Real-Time Monitoring System</p>
+
+            </div>
+
+            <div id="connectionStatus" class="status">
+                🔴 Connecting...
+            </div>
+
+        </header>
+
+        <!-- KPI Cards -->
+
+        <section class="cards">
+
+            <div class="card">
+                <h3>Total Orders</h3>
+                <h2 id="totalOrders">0</h2>
+            </div>
+
+            <div class="card">
+                <h3>Pending</h3>
+                <h2 id="pendingOrders">0</h2>
+            </div>
+
+            <div class="card">
+                <h3>Shipped</h3>
+                <h2 id="shippedOrders">0</h2>
+            </div>
+
+            <div class="card">
+                <h3>Delivered</h3>
+                <h2 id="deliveredOrders">0</h2>
+            </div>
+
+        </section>
+
+        <!-- Charts -->
+
+        <section class="charts">
+
+            <div class="chart-card">
+
+                <h2>Status Distribution</h2>
+
+                <canvas id="statusChart"></canvas>
+
+            </div>
+
+            <div class="chart-card">
+
+                <h2>Live Activity</h2>
+
+                <div id="activityFeed"></div>
+
+            </div>
+
+        </section>
+
+        <!-- Orders Table -->
+
+        <section class="table-card">
+
+            <div class="table-header">
+
+                <h2>Orders</h2>
+
+                <input
+                    type="text"
+                    id="searchBox"
+                    placeholder="Search customer..."
+                >
+
+            </div>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>ID</th>
+                            <th>Customer</th>
+                            <th>Product</th>
+                            <th>Status</th>
+                            <th>Updated</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="ordersTable">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+        </section>
+
+    </main>
+
+</div>
+
+<!-- Order Details Modal -->
+<div id="orderModal" class="modal">
+
+    <div class="modal-content">
+
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+
+        <h2>Order Details</h2>
+
+        <p><strong>Order ID:</strong> <span id="modalOrderId"></span></p>
+
+        <p><strong>Customer:</strong> <span id="modalCustomer"></span></p>
+
+        <p><strong>Product:</strong> <span id="modalProduct"></span></p>
+
+        <p><strong>Status:</strong> <span id="modalStatus"></span></p>
+
+        <p><strong>Updated:</strong> <span id="modalUpdated"></span></p>
+
+    </div>
+
+</div>
+
+<!-- Toast Notifications -->
+<div id="toastContainer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="js/api.js"></script>
+<script src="js/socket.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/dashboard.js"></script>
+
+
+</body>
+
+</html>
